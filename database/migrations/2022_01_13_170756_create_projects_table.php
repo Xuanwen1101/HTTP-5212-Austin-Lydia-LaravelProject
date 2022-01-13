@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->string('url');
             $table->text('content');
             $table->enum('type', ['Web Design', 'Graphic Design']);
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
