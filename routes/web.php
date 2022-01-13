@@ -24,4 +24,4 @@ Route::get('/project/{project:slug}', function (Project $project) {
     return view('project', [
         'project' => $project
     ]);
-}); //->where('project', '[A-z\-]+');
+})->where('project', '[A-z\-]+');   

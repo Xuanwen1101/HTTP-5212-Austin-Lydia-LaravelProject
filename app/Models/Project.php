@@ -20,6 +20,11 @@ class Project extends Model
         'content'
     ];
 
+    public function type()
+    {
+        return $this->belongsTo(Type::class, 'type_id');
+    }
+    
     public function getRouteKeyName()
     {
         return 'slug';

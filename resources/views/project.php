@@ -14,7 +14,19 @@
     </head>
     <body>
         
-        <h1>Project Details!</h1>
+        <h1><?= $project->title ?></h1>
+
+        <p><?= $project->content ?></p>
+
+        <?php if($project->url): ?>
+            View Project: <a href="<?= $project->url ?>"><?= $project->url ?></a>
+        <?php endif; ?>
+
+        <p>
+            Posted: <?= $project->created_at->format('M j, Y') ?>
+            <br>
+            Type: <?= $project->type->title ?>
+        </p>
 
         <a href="/">Back to Home</a>
 
