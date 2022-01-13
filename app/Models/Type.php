@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Type extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,6 @@ class Project extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'title',
-        'url',
-        'content'
+        'title'
     ];
 }
