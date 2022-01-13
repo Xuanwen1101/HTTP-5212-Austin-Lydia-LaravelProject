@@ -19,6 +19,7 @@ class ProjectFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'url' => $this->faker->url,
+            'slug' => $this->faker->slug,
             'content' => $this->faker->paragraph,
             'user_id' => User::all()->random(),
             'type_id' => Type::all()->random(),

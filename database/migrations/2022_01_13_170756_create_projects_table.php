@@ -17,6 +17,7 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('url');
+            $table->string('slug')->unique();
             $table->text('content');
             $table->foreignId('type_id');
             $table->foreignId('user_id');
