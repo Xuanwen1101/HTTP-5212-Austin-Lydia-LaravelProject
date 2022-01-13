@@ -14,9 +14,9 @@
     </head>
     <body>
         
-        <h1>Hello World!</h1>
+        <h1>Project Details!</h1>
 
-        <a href="/project">Project Details</a>
+        <a href="/">Back to Home</a>
 
     </body>
 </html>
