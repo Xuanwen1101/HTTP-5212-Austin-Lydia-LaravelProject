@@ -13,22 +13,46 @@
         
     </head>
     <body>
+
+
+        <header class="w3-padding">
+
+            <h1 class="w3-text-red">My Portfolio!</h1>
+
+        </header>
+
+        <hr>
+
+        <section class="w3-padding">
         
-        <h1><?= $project->title ?></h1>
+            <h2 class="w3-text-blue"><?= $project->title ?></h2>
 
-        <p><?= $project->content ?></p>
+            <p><?= $project->content ?></p>
 
-        <?php if($project->url): ?>
-            View Project: <a href="<?= $project->url ?>"><?= $project->url ?></a>
-        <?php endif; ?>
+            <?php if($project->url): ?>
+                View Project: <a href="<?= $project->url ?>"><?= $project->url ?></a>
+            <?php endif; ?>
 
-        <p>
-            Posted: <?= $project->created_at->format('M j, Y') ?>
-            <br>
-            Type: <?= $project->type->title ?>
-        </p>
+            <p>
+                Posted: <?= $project->created_at->format('M j, Y') ?>
+                <br>
+                Type: <?= $project->type->title ?>
+            </p>
 
-        <a href="/">Back to Home</a>
+            <a href="/">Back to Home</a>
+
+        </section>
+
+        <hr>
+
+        <footer class="w3-padding">
+
+            Footer Text | 
+            Copyright <?= date('Y') ?> |
+            <a href="#">Facebook</a> | 
+            <a href="#">Instagram</a>
+
+        </footer>
 
     </body>
 </html>
