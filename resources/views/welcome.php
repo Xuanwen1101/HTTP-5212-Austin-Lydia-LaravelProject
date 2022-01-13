@@ -16,7 +16,9 @@
         
         <h1>Hello World!</h1>
 
-        <a href="/project">Project Details</a>
+
+
+        List project here!
 
     </body>
 </html>

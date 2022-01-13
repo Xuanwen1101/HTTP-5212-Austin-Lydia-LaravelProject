@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/project', function () {
+Route::get('/project/{project}', function ($slug) {
     return view('project');
-});
+})->where('project', '[A-z\-]+');
