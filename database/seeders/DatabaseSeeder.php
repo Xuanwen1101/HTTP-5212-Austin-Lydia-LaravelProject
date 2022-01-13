@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use App\Models\Project;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,8 +18,9 @@ class DatabaseSeeder extends Seeder
 
         User::truncate();
         Project::truncate();
-
-        \App\Models\User::factory(2)->create();
         
+        User::factory()->count(3)->create();
+        Project::factory()->count(10)->create();
+            
     }
 }
