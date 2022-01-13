@@ -16,9 +16,22 @@
         
         <h1>Hello World!</h1>
 
+        <?php foreach($projects as $project): ?>
+
+            <h2><?= $project->title ?></h2>
+            <p><?= $project->content ?></p>
+            <?php if($project->url): ?>
+                View Project: <a href="<?= $project->url ?>"><?= $project->url ?></a>
+            <?php endif; ?>
+            <p>
+                Posted: <?= $project->created_at->format('M j, Y') ?>
+                <br>
+                <a href="/project/<?= $project->slug ?>">View Project Details</a>
+            </p>
 
 
-        List project here!
+        <?php endforeach; ?>
+
 
     </body>
 </html>

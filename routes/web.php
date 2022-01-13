@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'projects' => Project::all()
+    ]);
 });
 
-Route::get('/project/{project}', function ($slug) {
-    return view('project');
-})->where('project', '[A-z\-]+');
+Route::get('/project/{project:slug}', function (Project $project) {
+    return view('project', [
+        'project' => $project
+    ]);
+}); //->where('project', '[A-z\-]+');
