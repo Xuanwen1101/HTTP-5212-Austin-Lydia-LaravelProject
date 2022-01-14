@@ -44,25 +44,38 @@
 
         <hr>
 
-        <section class="w3-padding">
+        <section class="w3-padding w3-container">
 
             <h2 class="w3-text-blue">Projects</h2>
 
             <?php foreach($projects as $project): ?>
 
-                <h3><?= $project->title ?></h3>
+                <div class="w3-card w3-margin">
 
-                <?php if($project->url): ?>
-                    View Project: <a href="<?= $project->url ?>"><?= $project->url ?></a>
-                <?php endif; ?>
+                    <div class="w3-container w3-blue">
 
-                <p>
-                    Posted: <?= $project->created_at->format('M j, Y') ?>
-                    <br>
-                    <a href="/project/<?= $project->slug ?>">View Project Details</a>
-                    <br>
-                    Type: <?= $project->type->title ?>
-                </p>
+                        <h3><?= $project->title ?></h3>
+
+                    </div>
+
+                    <div class="w3-container w3-padding">
+
+                        <?php if($project->url): ?>
+                            View Project: <a href="<?= $project->url ?>"><?= $project->url ?></a>
+                        <?php endif; ?>
+
+                        <p>
+                            Posted: <?= $project->created_at->format('M j, Y') ?>
+                            <br>
+                            Type: <?= $project->type->title ?>
+                        </p>
+
+                        <a href="/project/<?= $project->slug ?>" class="w3-button w3-green">View Project Details</a>
+
+                    </div>
+                
+
+                </div>
 
             <?php endforeach; ?>
 
@@ -79,8 +92,6 @@
                 <br>
                 Email: <a href="mailto:email@address.com">email@address.com</a>
             </p>
-                
-            FORM
 
         </section>
 

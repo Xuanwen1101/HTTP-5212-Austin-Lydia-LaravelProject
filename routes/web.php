@@ -2,6 +2,7 @@
 
 use App\Models\Project;
 use App\Http\Controllers\ConsoleController;
+use App\Http\Controllers\ProjectsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,4 @@ Route::get('/console/login', [ConsoleController::class, 'form'])->middleware('gu
 Route::post('/console/login', [ConsoleController::class, 'login'])->middleware('guest');
 Route::get('/console/dashboard', [ConsoleController::class, 'dashboard'])->middleware('auth');
 
+Route::get('/console/projects/list', [ProjectsController::class, 'list'])->middleware('auth');
