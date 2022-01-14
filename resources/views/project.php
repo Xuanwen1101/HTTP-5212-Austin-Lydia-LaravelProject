@@ -55,10 +55,11 @@
             <br>
 
             <?php if(Auth::check()): ?>
-                <a href="/logout">Logout</a> | 
-                <a href="/admin">Admin</a>
+                You are logged in as <?= auth()->user()->first ?> <?= auth()->user()->last ?> | 
+                <a href="/console/logout">Log Out</a> | 
+                <a href="/console/dashboard">Dashboard</a>
             <?php else: ?>
-                <a href="/login">Login</a>
+                <a href="/console/login">Login</a>
             <?php endif; ?>
 
         </footer>

@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Project;
-use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\ConsoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +27,8 @@ Route::get('/project/{project:slug}', function (Project $project) {
     ]);
 })->where('project', '[A-z\-]+');
 
-Route::get('logout', [SessionsController::class, 'destroy']);
+Route::get('/console/logout', [ConsoleController::class, 'logout'])->middleware('auth');
+Route::get('/console/login', [ConsoleController::class, 'form'])->middleware('guest');
+Route::post('/console/login', [ConsoleController::class, 'login'])->middleware('guest');
+Route::get('/console/dashboard', [ConsoleController::class, 'dashboard'])->middleware('auth');
+
