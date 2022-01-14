@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Project;
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,6 @@ Route::get('/project/{project:slug}', function (Project $project) {
     return view('project', [
         'project' => $project
     ]);
-})->where('project', '[A-z\-]+');   
+})->where('project', '[A-z\-]+');
+
+Route::get('logout', [SessionsController::class, 'destroy']);

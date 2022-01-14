@@ -52,6 +52,15 @@
             <a href="#">Facebook</a> | 
             <a href="#">Instagram</a>
 
+            <br>
+
+            <?php if(Auth::check()): ?>
+                <a href="/logout">Logout</a> | 
+                <a href="/admin">Admin</a>
+            <?php else: ?>
+                <a href="/login">Login</a>
+            <?php endif; ?>
+
         </footer>
 
     </body>
