@@ -32,7 +32,6 @@ class ConsoleController extends Controller
         return back()
             ->withInput()
             ->withErrors(['email' => 'Invalid email/password combinatin']);
-        
 
     }
 

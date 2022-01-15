@@ -25,7 +25,8 @@
             <?php if(Auth::check()): ?>
                 You are logged in as <?= auth()->user()->first ?> <?= auth()->user()->last ?> | 
                 <a href="/console/logout">Log Out</a> | 
-                <a href="/console/dashboard">Dashboard</a>
+                <a href="/console/dashboard">Dashboard</a> | 
+                <a href="/">Website Home Page</a>
             <?php else: ?>
                 <a href="/">Return to My Portfolio</a>
             <?php endif; ?>
@@ -38,8 +39,8 @@
 
             <h2>Manage Projects</h2>
 
-            <table class="w3-table w3-stripped">
-                <tr class="w3-green">
+            <table class="w3-table w3-stripped w3-bordered">
+                <tr class="w3-red">
                     <th>Title</th>
                     <th>Slug</th>
                     <th>Type</th>
@@ -50,7 +51,11 @@
                 <?php foreach($projects as $project): ?>
                     <tr>
                         <td><?= $project->title ?></td>
-                        <td><?= $project->slug ?></td>
+                        <td>
+                            <a href="/project/<?= $project->slug ?>">
+                                <?= $project->slug ?>
+                            </a>
+                        </td>
                         <td><?= $project->type->title ?></td>
                         <td><?= $project->created_at->format('M j, Y') ?></td>
                         <td><a href="/console/projects/<?= $project->id ?>/edit">Edit</a></td>
@@ -59,7 +64,7 @@
                 <?php endforeach; ?>
             </table>
 
-            <a href="/console/projects/add" class="w3-button w3-green">New Project</a>
+            <a href="/console/projects/add" class="w3-button w3-green w3-margin-top">New Project</a>
 
         </section>
 

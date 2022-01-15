@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="/app.css">
 
-        <script src="/app.js" ty></script>
+        <script src="/app.js"></script>
         
     </head>
     <body>
@@ -19,13 +19,7 @@
 
             <h1 class="w3-text-red">Portfolio Console</h1>
 
-            <?php if(Auth::check()): ?>
-                You are logged in as <?= auth()->user()->first ?> <?= auth()->user()->last ?> | 
-                <a href="/console/logout">Log Out</a> | 
-                <a href="/console/dashboard">Dashboard</a>
-            <?php else: ?>
-                <a href="/">Return to My Portfolio</a>
-            <?php endif; ?>
+            <a href="/">Return to My Portfolio</a>
 
         </header>
 
@@ -37,25 +31,25 @@
 
                 <?= csrf_field() ?>
 
-                <label for="email">Email Address:</label>
-                <input type="email" name="email" id="email" value="<?= old('email') ?>" required>
-                
-                <?php if($errors->first('email')): ?>
-                    <br>
-                    <span class="w3-text-red"><?= $errors->first('email'); ?></span>
-                <?php endif; ?>
+                <div class="w3-margin-bottom">
+                    <label for="email">Email Address:</label>
+                    <input type="email" name="email" id="email" value="<?= old('email') ?>" required>
+                    
+                    <?php if($errors->first('email')): ?>
+                        <br>
+                        <span class="w3-text-red"><?= $errors->first('email'); ?></span>
+                    <?php endif; ?>
+                </div>
 
-                <br>
+                <div class="w3-margin-bottom">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" required>
 
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" required>
-
-                <?php if($errors->first('password')): ?>
-                    <br>
-                    <span class="w3-text-red"><?= $errors->first('password'); ?></span>
-                <?php endif; ?>
-
-                <br>
+                    <?php if($errors->first('password')): ?>
+                        <br>
+                        <span class="w3-text-red"><?= $errors->first('password'); ?></span>
+                    <?php endif; ?>
+                </div>
 
                 <button type="submit">Log In</button>
 
