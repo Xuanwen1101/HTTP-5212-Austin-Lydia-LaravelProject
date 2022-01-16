@@ -34,74 +34,57 @@
 
         <section class="w3-padding">
 
-            <h2>Edit Project</h2>
+            <h2>Edit User</h2>
 
-            <form method="post" action="/console/projects/edit/<?= $project->id ?>" novalidate class="w3-margin-bottom">
+            <form method="post" action="/console/users/edit/<?= $user->id ?>" novalidate class="w3-margin-bottom">
 
                 <?= csrf_field() ?>
 
                 <div class="w3-margin-bottom">
-                    <label for="title">Title:</label>
-                    <input type="title" name="title" id="title" value="<?= old('title', $project->title) ?>" required>
+                    <label for="first">First Name:</label>
+                    <input type="text" name="first" id="first" value="<?= old('first', $user->first) ?>" required>
                     
-                    <?php if($errors->first('title')): ?>
+                    <?php if($errors->first('first')): ?>
                         <br>
-                        <span class="w3-text-red"><?= $errors->first('title'); ?></span>
+                        <span class="w3-text-red"><?= $errors->first('first'); ?></span>
                     <?php endif; ?>
                 </div>
 
                 <div class="w3-margin-bottom">
-                    <label for="url">URL:</label>
-                    <input type="url" name="url" id="url" value="<?= old('url', $project->url) ?>">
-
-                    <?php if($errors->first('url')): ?>
+                    <label for="last">Last Name:</label>
+                    <input type="text" name="last" id="last" value="<?= old('last', $user->last) ?>" required>
+                    
+                    <?php if($errors->first('last')): ?>
                         <br>
-                        <span class="w3-text-red"><?= $errors->first('url'); ?></span>
+                        <span class="w3-text-red"><?= $errors->first('last'); ?></span>
                     <?php endif; ?>
                 </div>
 
                 <div class="w3-margin-bottom">
-                    <label for="slug">Slug:</label>
-                    <input type="text" name="slug" id="slug" value="<?= old('slug', $project->slug) ?>" required>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" value="<?= old('email', $user->email) ?>">
 
-                    <?php if($errors->first('slug')): ?>
+                    <?php if($errors->first('email')): ?>
                         <br>
-                        <span class="w3-text-red"><?= $errors->first('slug'); ?></span>
+                        <span class="w3-text-red"><?= $errors->first('email'); ?></span>
                     <?php endif; ?>
                 </div>
 
                 <div class="w3-margin-bottom">
-                    <label for="content">Content:</label>
-                    <textarea name="content" id="content" required><?= old('content', $project->content) ?></textarea>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password">
 
-                    <?php if($errors->first('content')): ?>
+                    <?php if($errors->first('password')): ?>
                         <br>
-                        <span class="w3-text-red"><?= $errors->first('content'); ?></span>
+                        <span class="w3-text-red"><?= $errors->first('password'); ?></span>
                     <?php endif; ?>
                 </div>
 
-                <div class="w3-margin-bottom">
-                    <label for="type_id">Type:</label>
-                    <select name="type_id" id="type_id">
-                        <option></option>
-                        <?php foreach($types as $type): ?>
-                            <option value="<?= $type->id ?>"
-                                <?= $type->id == old('type_id', $project->type_id) ? 'selected' : '' ?>>
-                                <?= $type->title ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <?php if($errors->first('type_id')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('type_id'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <button type="submit" class="w3-button w3-green">Edit Project</button>
+                <button type="submit" class="w3-button w3-green">Edit User</button>
 
             </form>
 
-            <a href="/console/projects/list">Back to Project List</a>
+            <a href="/console/users/list">Back to User List</a>
 
         </section>
 

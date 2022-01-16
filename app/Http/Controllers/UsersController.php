@@ -12,14 +12,18 @@ class UsersController extends Controller
 
     public function list()
     {
+
         return view('users.list', [
             'users' => User::all()
         ]);
+
     }
 
     public function addForm()
     {
+
         return view('users.add');
+
     }
     
     public function add()
@@ -32,22 +36,25 @@ class UsersController extends Controller
             'password' => 'required',
         ]);
 
-        $user = new Project();
+        $user = new User();
         $user->first = $attributes['first'];
         $user->last = $attributes['last'];
         $user->email = $attributes['email'];
         $user->password = $attributes['password'];
-        // $user->save();
+        $user->save();
 
         return redirect('/console/users/list')
             ->with('message', 'User has been added!');
+
     }
 
     public function editForm(User $user)
     {
+
         return view('users.edit', [
-            'user' => $project,
+            'user' => $user,
         ]);
+
     }
 
     public function edit(User $user)
@@ -67,19 +74,30 @@ class UsersController extends Controller
         $user->first = $attributes['first'];
         $user->last = $attributes['last'];
         $user->email = $attributes['email'];
-        $user->password = $attributes['password'];
-        // $user->save();
+
+        if($attributes['password']) $user->password = $attributes['password'];
+
+        $user->save();
 
         return redirect('/console/users/list')
             ->with('message', 'User has been edited!');
+
     }
 
     public function delete(User $user)
     {
-        // $user->delete();
+
+        if($user->id == auth()->user()->id)
+        {
+            return redirect('/console/users/list')
+                ->with('message', 'Cannot delete your own user account!');        
+        }
         
-        return redirect('/console/user/list')
-            ->with('message', 'User has been deleted!');        
+        $user->delete();
+
+        return redirect('/console/users/list')
+            ->with('message', 'User has been deleted!');                
+        
     }
     
 }

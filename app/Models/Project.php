@@ -27,6 +27,11 @@ class Project extends Model
     {
         return $this->belongsTo(Type::class, 'type_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(USer::class, 'user_id');
+    }
     
     public function getRouteKeyName()
     {
