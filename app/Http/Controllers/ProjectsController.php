@@ -65,7 +65,7 @@ class ProjectsController extends Controller
             'slug' => [
                 'required',
                 Rule::unique('projects')->ignore($project->id),
-                'regex:/^[A-z\-]+$/'
+                'regex:/^[A-z\-]+$/',
             ],
             'url' => 'nullable|url',
             'content' => 'required',
