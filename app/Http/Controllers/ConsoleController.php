@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class ConsoleController extends Controller
 {
@@ -32,7 +33,7 @@ class ConsoleController extends Controller
         
         return back()
             ->withInput()
-            ->withErrors(['email' => 'Invalid email/password combinatin']);
+            ->withErrors(['email' => 'Invalid email/password combination']);
     }
 
     public function dashboard()
