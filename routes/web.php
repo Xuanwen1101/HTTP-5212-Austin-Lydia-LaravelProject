@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routes    
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -29,8 +29,13 @@ Route::get('/project/{project:slug}', function (Project $project) {
 })->where('project', '[A-z\-]+');
 
 Route::get('/console/logout', [ConsoleController::class, 'logout'])->middleware('auth');
-Route::get('/console/login', [ConsoleController::class, 'form'])->middleware('guest');
+Route::get('/console/login', [ConsoleController::class, 'loginForm'])->middleware('guest');
 Route::post('/console/login', [ConsoleController::class, 'login'])->middleware('guest');
 Route::get('/console/dashboard', [ConsoleController::class, 'dashboard'])->middleware('auth');
 
 Route::get('/console/projects/list', [ProjectsController::class, 'list'])->middleware('auth');
+Route::get('/console/projects/add', [ProjectsController::class, 'addForm'])->middleware('auth');
+Route::post('/console/projects/add', [ProjectsController::class, 'add'])->middleware('auth');
+Route::get('/console/projects/edit/{project:id}', [ProjectsController::class, 'editForm'])->where('project', '[0-9]+')->middleware('auth');
+Route::post('/console/projects/edit/{project:id}', [ProjectsController::class, 'edit'])->where('project', '[0-9]+')->middleware('auth');
+Route::get('/console/projects/delete/{project:id}', [ProjectsController::class, 'delete'])->where('project', '[0-9]+')->middleware('auth');

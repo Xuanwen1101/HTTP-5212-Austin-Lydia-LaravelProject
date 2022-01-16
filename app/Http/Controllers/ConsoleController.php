@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 
 class ConsoleController extends Controller
 {
+    
     public function logout()
     {
         auth()->logout();
         return redirect('/');
     }
 
-    public function form()
+    public function loginForm()
     {
         return view('console.login');
     }
@@ -32,7 +33,6 @@ class ConsoleController extends Controller
         return back()
             ->withInput()
             ->withErrors(['email' => 'Invalid email/password combinatin']);
-
     }
 
     public function dashboard()

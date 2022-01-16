@@ -17,7 +17,6 @@
     </head>
     <body>
 
-
         <header class="w3-padding">
 
             <h1 class="w3-text-red">Portfolio Console</h1>
@@ -35,11 +34,17 @@
 
         <hr>
 
+        <?php if(session()->has('message')): ?>
+            <div class="w3-padding w3-margin-top w3-margin-bottom">
+                <div class="w3-red w3-center w3-padding"><?= session()->get('message') ?></div>
+            </div>
+        <?php endif; ?>
+
         <section class="w3-padding">
 
             <h2>Manage Projects</h2>
 
-            <table class="w3-table w3-stripped w3-bordered">
+            <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
                 <tr class="w3-red">
                     <th>Title</th>
                     <th>Slug</th>
@@ -58,13 +63,13 @@
                         </td>
                         <td><?= $project->type->title ?></td>
                         <td><?= $project->created_at->format('M j, Y') ?></td>
-                        <td><a href="/console/projects/<?= $project->id ?>/edit">Edit</a></td>
-                        <td><a href="/console/projects/<?= $project->id ?>/delete">Delete</a></td>
+                        <td><a href="/console/projects/edit/<?= $project->id ?>">Edit</a></td>
+                        <td><a href="/console/projects/delete/<?= $project->id ?>">Delete</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
 
-            <a href="/console/projects/add" class="w3-button w3-green w3-margin-top">New Project</a>
+            <a href="/console/projects/add" class="w3-button w3-green">New Project</a>
 
         </section>
 
