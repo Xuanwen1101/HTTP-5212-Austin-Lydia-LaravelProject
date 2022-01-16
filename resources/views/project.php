@@ -27,6 +27,12 @@
         
             <h2 class="w3-text-blue"><?= $project->title ?></h2>
 
+            <?php if($project->image): ?>
+                <div class="w3-margin-top">
+                    <img src="<?= asset('storage/'.$project->image) ?>" width="400">
+                </div>
+            <?php endif; ?>
+
             <p><?= $project->content ?></p>
 
             <?php if($project->url): ?>

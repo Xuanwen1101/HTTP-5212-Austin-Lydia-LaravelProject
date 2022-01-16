@@ -57,6 +57,12 @@
                         <h3><?= $project->title ?></h3>
 
                     </div>
+                    
+                    <?php if($project->image): ?>
+                        <div class="w3-container w3-margin-top">
+                            <img src="<?= asset('storage/'.$project->image) ?>" width="200">
+                        </div>
+                    <?php endif; ?>
 
                     <div class="w3-container w3-padding">
 
