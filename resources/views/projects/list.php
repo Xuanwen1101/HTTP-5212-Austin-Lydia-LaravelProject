@@ -43,6 +43,7 @@
 
             <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
                 <tr class="w3-red">
+                    <th></th>
                     <th>Title</th>
                     <th>Slug</th>
                     <th>Type</th>
@@ -53,6 +54,11 @@
                 </tr>
                 <?php foreach($projects as $project): ?>
                     <tr>
+                        <td>
+                            <?php if($project->image): ?>
+                                <img src="<?= asset('storage/'.$project->image) ?>" width="200">
+                            <?php endif; ?>
+                        </td>
                         <td><?= $project->title ?></td>
                         <td>
                             <a href="/project/<?= $project->slug ?>">

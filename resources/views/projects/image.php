@@ -36,7 +36,13 @@
 
             <h2>Project Image</h2>
 
-            <form method="post" action="/console/projects/edit/<?= $project->id ?>" novalidate class="w3-margin-bottom" enctype="multipart/form-data">
+            <div class="w3-margin-bottom">
+                <?php if($project->image): ?>
+                    <img src="<?= asset('storage/'.$project->image) ?>" width="200">
+                <?php endif; ?>
+            </div>
+
+            <form method="post" action="/console/projects/image/<?= $project->id ?>" novalidate class="w3-margin-bottom" enctype="multipart/form-data">
 
                 <?= csrf_field() ?>
 
