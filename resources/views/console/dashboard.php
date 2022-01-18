@@ -14,7 +14,6 @@
     </head>
     <body>
 
-
         <header class="w3-padding">
 
             <h1 class="w3-text-red">Portfolio Console</h1>
