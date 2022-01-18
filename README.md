@@ -16,6 +16,8 @@ The database setup includes migrations and seeding. Run the following command to
 php artisan migrate:refresh --seed
 ```
 
+All user acocunts will have the default password of "password".
+
 ## Tutorial Requirements:
 
 * [Visual Studio Code](https://code.visualstudio.com/) or [Brackets](http://brackets.io/) (or any code editor)
