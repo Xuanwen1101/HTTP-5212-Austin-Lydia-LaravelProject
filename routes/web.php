@@ -49,3 +49,10 @@ Route::post('/console/users/add', [UsersController::class, 'add'])->middleware('
 Route::get('/console/users/edit/{user:id}', [UsersController::class, 'editForm'])->where('user', '[0-9]+')->middleware('auth');
 Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware('auth');
 Route::get('/console/users/delete/{user:id}', [UsersController::class, 'delete'])->where('user', '[0-9]+')->middleware('auth');
+
+Route::get('/console/types/list', [UsersController::class, 'list'])->middleware('auth');
+Route::get('/console/types/add', [UsersController::class, 'addForm'])->middleware('auth');
+Route::post('/console/types/add', [UsersController::class, 'add'])->middleware('auth');
+Route::get('/console/types/edit/{type:id}', [UsersController::class, 'editForm'])->where('type', '[0-9]+')->middleware('auth');
+Route::post('/console/types/edit/{type:id}', [UsersController::class, 'edit'])->where('type', '[0-9]+')->middleware('auth');
+Route::get('/console/types/delete/{type:id}', [UsersController::class, 'delete'])->where('type', '[0-9]+')->middleware('auth');
