@@ -5,6 +5,10 @@ use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\TypesController;
 use App\Http\Controllers\UsersController;
+
+use App\Http\Controllers\SchoolsController;
+use App\Http\Controllers\ContentsController;
+use App\Http\Controllers\WorksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,3 +61,30 @@ Route::post('/console/types/add', [TypesController::class, 'add'])->middleware('
 Route::get('/console/types/edit/{type:id}', [TypesController::class, 'editForm'])->where('type', '[0-9]+')->middleware('auth');
 Route::post('/console/types/edit/{type:id}', [TypesController::class, 'edit'])->where('type', '[0-9]+')->middleware('auth');
 Route::get('/console/types/delete/{type:id}', [TypesController::class, 'delete'])->where('type', '[0-9]+')->middleware('auth');
+
+Route::get('/console/contents/list', [ContentsController::class, 'list'])->middleware('auth');
+Route::get('/console/contents/add', [ContentsController::class, 'addForm'])->middleware('auth');
+Route::post('/console/contents/add', [ContentsController::class, 'add'])->middleware('auth');
+Route::get('/console/contents/edit/{content:id}', [ContentsController::class, 'editForm'])->where('content', '[0-9]+')->middleware('auth');
+Route::post('/console/contents/edit/{content:id}', [ContentsController::class, 'edit'])->where('content', '[0-9]+')->middleware('auth');
+Route::get('/console/contents/delete/{content:id}', [ContentsController::class, 'delete'])->where('content', '[0-9]+')->middleware('auth');
+Route::get('/console/contents/image/{content:id}', [ContentsController::class, 'imageForm'])->where('content', '[0-9]+')->middleware('auth');
+Route::post('/console/contents/image/{content:id}', [ContentsController::class, 'image'])->where('content', '[0-9]+')->middleware('auth');
+
+Route::get('/console/schools/list', [SchoolsController::class, 'list'])->middleware('auth');
+Route::get('/console/schools/add', [SchoolsController::class, 'addForm'])->middleware('auth');
+Route::post('/console/schools/add', [SchoolsController::class, 'add'])->middleware('auth');
+Route::get('/console/schools/edit/{school:id}', [SchoolsController::class, 'editForm'])->where('school', '[0-9]+')->middleware('auth');
+Route::post('/console/schools/edit/{school:id}', [SchoolsController::class, 'edit'])->where('school', '[0-9]+')->middleware('auth');
+Route::get('/console/schools/delete/{school:id}', [SchoolsController::class, 'delete'])->where('school', '[0-9]+')->middleware('auth');
+Route::get('/console/schools/image/{school:id}', [SchoolsController::class, 'imageForm'])->where('school', '[0-9]+')->middleware('auth');
+Route::post('/console/schools/image/{school:id}', [SchoolsController::class, 'image'])->where('school', '[0-9]+')->middleware('auth');
+
+Route::get('/console/works/list', [WorksController::class, 'list'])->middleware('auth');
+Route::get('/console/works/add', [WorksController::class, 'addForm'])->middleware('auth');
+Route::post('/console/works/add', [WorksController::class, 'add'])->middleware('auth');
+Route::get('/console/works/edit/{work:id}', [WorksController::class, 'editForm'])->where('work', '[0-9]+')->middleware('auth');
+Route::post('/console/works/edit/{work:id}', [WorksController::class, 'edit'])->where('work', '[0-9]+')->middleware('auth');
+Route::get('/console/works/delete/{work:id}', [WorksController::class, 'delete'])->where('work', '[0-9]+')->middleware('auth');
+Route::get('/console/works/image/{work:id}', [WorksController::class, 'imageForm'])->where('work', '[0-9]+')->middleware('auth');
+Route::post('/console/works/image/{work:id}', [WorksController::class, 'image'])->where('work', '[0-9]+')->middleware('auth');

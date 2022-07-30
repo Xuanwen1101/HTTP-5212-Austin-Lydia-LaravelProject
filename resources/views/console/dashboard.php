@@ -37,6 +37,11 @@
                 <li><a href="/console/projects/list">Manage Projects</a></li>
                 <li><a href="/console/types/list">Manage Types</a></li>
                 <li><a href="/console/users/list">Manage Users</a></li>
+                
+                <li><a href="/console/schools/list">Manage Educations</a></li>
+                <li><a href="/console/works/list">Manage Work Experience</a></li>
+                <li><a href="/console/contents/list">Manage Extra Contents</a></li>
+                
                 <li><a href="/console/logout">Log Out</a></li>
             </ul>
 

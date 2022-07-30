@@ -42,7 +42,7 @@
 
                 <div class="w3-margin-bottom">
                     <label for="title">Title:</label>
-                    <input type="title" name="title" id="title" value="<?= old('title', $project->title) ?>" required>
+                    <input type="text" name="title" id="title" value="<?= old('title', $project->title) ?>" required>
                     
                     <?php if($errors->first('title')): ?>
                         <br>

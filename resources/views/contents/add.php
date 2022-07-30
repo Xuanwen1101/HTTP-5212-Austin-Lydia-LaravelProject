@@ -34,9 +34,9 @@
 
         <section class="w3-padding">
 
-            <h2>Add Project</h2>
+            <h2>Add Content</h2>
 
-            <form method="post" action="/console/projects/add" novalidate class="w3-margin-bottom">
+            <form method="post" action="/console/contents/add" novalidate class="w3-margin-bottom">
 
                 <?= csrf_field() ?>
 
@@ -50,25 +50,6 @@
                     <?php endif; ?>
                 </div>
 
-                <div class="w3-margin-bottom">
-                    <label for="url">URL:</label>
-                    <input type="url" name="url" id="url" value="<?= old('url') ?>">
-
-                    <?php if($errors->first('url')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('url'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="slug">Slug:</label>
-                    <input type="text" name="slug" id="slug" value="<?= old('slug') ?>" required>
-
-                    <?php if($errors->first('slug')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('slug'); ?></span>
-                    <?php endif; ?>
-                </div>
 
                 <div class="w3-margin-bottom">
                     <label for="content">Content:</label>
@@ -80,28 +61,12 @@
                     <?php endif; ?>
                 </div>
 
-                <div class="w3-margin-bottom">
-                    <label for="type_id">Type:</label>
-                    <select name="type_id" id="type_id">
-                        <option></option>
-                        <?php foreach($types as $type): ?>
-                            <option value="<?= $type->id ?>"
-                                <?= $type->id == old('type_id') ? 'selected' : '' ?>>
-                                <?= $type->title ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <?php if($errors->first('type_id')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('type_id'); ?></span>
-                    <?php endif; ?>
-                </div>
 
-                <button type="submit" class="w3-button w3-green">Add Project</button>
+                <button type="submit" class="w3-button w3-green">Add Content</button>
 
             </form>
 
-            <a href="/console/projects/list">Back to Project List</a>
+            <a href="/console/contents/list">Back to Content List</a>
 
         </section>
 
