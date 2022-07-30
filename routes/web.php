@@ -6,9 +6,13 @@ use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\TypesController;
 use App\Http\Controllers\UsersController;
 
+use App\Models\Blog;
 use App\Http\Controllers\SchoolsController;
 use App\Http\Controllers\ContentsController;
 use App\Http\Controllers\WorksController;
+use App\Http\Controllers\SkillsController;
+use App\Http\Controllers\EmailsController;
+use App\Http\Controllers\BlogsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +37,13 @@ Route::get('/project/{project:slug}', function (Project $project) {
         'project' => $project
     ]);
 })->where('project', '[A-z\-]+');
+
+// Blog Route
+Route::get('/article/{blog:slug}', function (Blog $blog) {
+    return view('blog', [
+        'blog' => $blog
+    ]);
+})->where('blog', '[A-z\-]+');
 
 Route::get('/console/logout', [ConsoleController::class, 'logout'])->middleware('auth');
 Route::get('/console/login', [ConsoleController::class, 'loginForm'])->middleware('guest');
@@ -88,3 +99,28 @@ Route::post('/console/works/edit/{work:id}', [WorksController::class, 'edit'])->
 Route::get('/console/works/delete/{work:id}', [WorksController::class, 'delete'])->where('work', '[0-9]+')->middleware('auth');
 Route::get('/console/works/image/{work:id}', [WorksController::class, 'imageForm'])->where('work', '[0-9]+')->middleware('auth');
 Route::post('/console/works/image/{work:id}', [WorksController::class, 'image'])->where('work', '[0-9]+')->middleware('auth');
+
+// Skills Routes
+Route::get('/console/skills/list', [SkillsController::class, 'list'])->middleware('auth');
+Route::get('/console/skills/add', [SkillsController::class, 'addForm'])->middleware('auth');
+Route::post('/console/skills/add', [SkillsController::class, 'add'])->middleware('auth');
+Route::get('/console/skills/edit/{skill:id}', [SkillsController::class, 'editForm'])->where('skill', '[0-9]+')->middleware('auth');
+Route::post('/console/skills/edit/{skill:id}', [SkillsController::class, 'edit'])->where('skill', '[0-9]+')->middleware('auth');
+Route::get('/console/skills/delete/{skill:id}', [SkillsController::class, 'delete'])->where('skill', '[0-9]+')->middleware('auth');
+Route::get('/console/skills/image/{skill:id}', [SkillsController::class, 'imageForm'])->where('skill', '[0-9]+')->middleware('auth');
+Route::post('/console/skills/image/{skill:id}', [SkillsController::class, 'image'])->where('skill', '[0-9]+')->middleware('auth');
+
+// Email Routes
+Route::get('/console/emails/list', [EmailsController::class, 'list'])->middleware('auth');
+Route::post('/console/emails/add', [EmailsController::class, 'add'])->middleware('auth');
+Route::get('/console/emails/delete/{email:id}', [EmailsController::class, 'delete'])->where('email', '[0-9]+')->middleware('auth');
+
+// Blog Routes
+Route::get('/console/blogs/list', [BlogsController::class, 'list'])->middleware('auth');
+Route::get('/console/blogs/add', [BlogsController::class, 'addForm'])->middleware('auth');
+Route::post('/console/blogs/add', [BlogsController::class, 'add'])->middleware('auth');
+Route::get('/console/blogs/edit/{blog:id}', [BlogsController::class, 'editForm'])->where('blog', '[0-9]+')->middleware('auth');
+Route::post('/console/blogs/edit/{blog:id}', [BlogsController::class, 'edit'])->where('blog', '[0-9]+')->middleware('auth');
+Route::get('/console/blogs/delete/{blog:id}', [BlogsController::class, 'delete'])->where('blog', '[0-9]+')->middleware('auth');
+Route::get('/console/blogs/image/{blog:id}', [BlogsController::class, 'imageForm'])->where('blog', '[0-9]+')->middleware('auth');
+Route::post('/console/blogs/image/{blog:id}', [BlogsController::class, 'image'])->where('blog', '[0-9]+')->middleware('auth');

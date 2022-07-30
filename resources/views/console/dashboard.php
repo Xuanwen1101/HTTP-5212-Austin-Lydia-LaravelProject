@@ -41,6 +41,9 @@
                 <li><a href="/console/schools/list">Manage Educations</a></li>
                 <li><a href="/console/works/list">Manage Work Experience</a></li>
                 <li><a href="/console/contents/list">Manage Extra Contents</a></li>
+                <li><a href="/console/skills/list">Manage Skills</a></li>
+                <li><a href="/console/emails/list">Manage Emails</a></li>
+                <li><a href="/console/blogs/list">Manage Blog</a></li>
                 
                 <li><a href="/console/logout">Log Out</a></li>
             </ul>
