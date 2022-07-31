@@ -37,31 +37,30 @@
             </div>
         <?php endif; ?>
 
-        <section class="w3-padding">
+        <section>
 
-            <h2>Manage Skills</h2>
-
-            <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
-                <tr class="w3-red">
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Message</th>
-                    <th>Received</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php foreach($emails as $email): ?>
-                    <tr>
-                        <td><?= $email->name ?></td>
-                        <td><?= $email->email ?></td>
-                        <td><?= $email->message ?></td>
-                        <td><?= $email->created_at->format('M j, Y') ?></td>
-                        <td><a href="/console/skills/delete/<?= $email->id ?>">Delete</a></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-
+            <h2 class="title">Manage Emails</h2>
+            <div class="contact__wrapper">
+              <?php foreach($emails as $email): ?>
+                <div class="contact__card">
+                  <div class="contact__text">
+                    <div class="contact__content contact__content--name">
+                      <h2>Name:</h2>
+                      <h3><?= $email->name?></h3>
+                    </div>
+                    <div class="contact__content contact__content--email">
+                      <h2>Email:</h2>
+                      <h3><?= $email->email?></h3>
+                    </div>
+                    <div class="contact__content contact__content--message">
+                      <h2>Message:</h2>
+                      <p><?= $email->message?></p>
+                    </div>
+                  </div>
+                  <a class="contact__delete" href="/console/emails/delete/<?= $email->id ?>">Delete</a>
+                </div>
+              <?php endforeach; ?>
+            </div>
         </section>
 
     </body>

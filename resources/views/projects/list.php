@@ -37,44 +37,30 @@
             </div>
         <?php endif; ?>
 
-        <section class="w3-padding">
+        <section>
 
-            <h2>Manage Projects</h2>
+            <h2 class="title">Manage Projects</h2>
+            <div class="objects-container">
+              <?php foreach($projects as $project): ?>
+                <div class="object-item">
+                  <?php if($project->image): ?>
+                    <img src="<?= asset('storage/'.$project->image) ?>" width="250" height="250">
+                  <?php endif; ?>
+                  <h2 class="object-title"><?= $project->title ?></h2>
+                  <div id="object-edit">
+                    <ul class="edit__list">
+                      <li class="edit__link"><a href="/console/projects/image/<?= $project->id ?>">Image</a></li>
+                      <li class="edit__link"><a href="/console/projects/edit/<?= $project->id ?>">Edit</a></li>
+                      <li class="delete__link"><a href="/console/projects/delete/<?= $project->id ?>">Delete</a></li>
+                    </ul>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
 
-            <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
-                <tr class="w3-red">
-                    <th></th>
-                    <th>Title</th>
-                    <th>Slug</th>
-                    <th>Type</th>
-                    <th>Created</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php foreach($projects as $project): ?>
-                    <tr>
-                        <td>
-                            <?php if($project->image): ?>
-                                <img src="<?= asset('storage/'.$project->image) ?>" width="200">
-                            <?php endif; ?>
-                        </td>
-                        <td><?= $project->title ?></td>
-                        <td>
-                            <a href="/project/<?= $project->slug ?>">
-                                <?= $project->slug ?>
-                            </a>
-                        </td>
-                        <td><?= $project->type->title ?></td>
-                        <td><?= $project->created_at->format('M j, Y') ?></td>
-                        <td><a href="/console/projects/image/<?= $project->id ?>">Image</a></td>
-                        <td><a href="/console/projects/edit/<?= $project->id ?>">Edit</a></td>
-                        <td><a href="/console/projects/delete/<?= $project->id ?>">Delete</a></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-
-            <a href="/console/projects/add" class="w3-button w3-green">New Project</a>
+            <div class="object__link">
+              <a href="/console/projects/add">New Project</a>
+            </div>
 
         </section>
 

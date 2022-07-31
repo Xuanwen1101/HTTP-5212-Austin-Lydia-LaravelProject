@@ -37,41 +37,30 @@
             </div>
         <?php endif; ?>
 
-        <section class="w3-padding">
+        <section>
 
-            <h2>Manage Work Experience</h2>
-
-            <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
-                <tr class="w3-red">
-                    <th></th>
-                    <th>Title</th>
-                    <th>Company</th>
-                    <th>Location</th>
-                    <th>Created</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php foreach($works as $work): ?>
-                    <tr>
-                        <td>
-                            <?php if($work->image): ?>
-                                <img src="<?= asset('storage/'.$work->image) ?>" width="200">
-                            <?php endif; ?>
-                        </td>
-                        <td><?= $work->title ?></td>
-                        <td><?= $work->company_name ?></td>
-                        <td><?= $work->location ?></td>
-                        <td><?= $work->created_at->format('M j, Y') ?></td>
-                        <td><a href="/console/works/image/<?= $work->id ?>">Image</a></td>
-                        <td><a href="/console/works/edit/<?= $work->id ?>">Edit</a></td>
-                        <td><a href="/console/works/delete/<?= $work->id ?>">Delete</a></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-
-            <a href="/console/works/add" class="w3-button w3-green">New Experience</a>
-
+            <h2 class="title">Manage Work Experience</h2>
+            <div class="objects-container">
+              <?php foreach($works as $work): ?>
+                <div class="object-item">
+                  <?php if($work->image): ?>
+                    <img src="<?= asset('storage/'.$work->image) ?>" width="250" height="250">
+                  <?php endif; ?>
+                  <h2 class="object-title"><?= $work->company_name ?></h2>
+                  <h2 class="secondary-title"><?= $work->title ?></h2>
+                  <div id="object-edit">
+                    <ul class="edit__list">
+                      <li class="edit__link"><a href="/console/works/image/<?= $work->id ?>">Image</a></li>
+                      <li class="edit__link"><a href="/console/works/edit/<?= $work->id ?>">Edit</a></li>
+                      <li class="delete__link"><a href="/console/works/delete/<?= $work->id ?>">Delete</a></li>
+                    </ul>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+            <div class="object__link">
+            <a href="/console/works/add">New Experience</a>
+            </div>
         </section>
 
     </body>

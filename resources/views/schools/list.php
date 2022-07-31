@@ -37,42 +37,30 @@
             </div>
         <?php endif; ?>
 
-        <section class="w3-padding">
+        <section>
 
-            <h2>Manage Educations</h2>
-
-            <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
-                <tr class="w3-red">
-                    <th></th>
-                    <th>School</th>
-                    <th>Degree</th>
-                    <th>Major</th>
-                    <th>Created</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php foreach($schools as $school): ?>
-                    <tr>
-                        <td>
-                            <?php if($school->image): ?>
-                                <img src="<?= asset('storage/'.$school->image) ?>" width="200">
-                            <?php endif; ?>
-                        </td>
-                        <td><?= $school->school ?></td>
-                        <td><?= $school->degree ?></td>
-                        <td><?= $school->major ?></td>
-                        <td><?= $school->created_at->format('M j, Y') ?></td>
-                        <td><a href="/console/schools/image/<?= $school->id ?>">Image</a></td>
-                        <td><a href="/console/schools/edit/<?= $school->id ?>">Edit</a></td>
-                        <td><a href="/console/schools/delete/<?= $school->id ?>">Delete</a></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-
-            <a href="/console/schools/add" class="w3-button w3-green">New Education</a>
-
+            <h2 class="title">Manage Educations</h2>
+            <div class="objects-container">
+              <?php foreach($schools as $school): ?>
+                <div class="object-item">
+                  <?php if($school->image): ?>
+                    <img src="<?= asset('storage/'.$school->image) ?>" width="220" height="220">
+                  <?php endif; ?>
+                  <h2 class="object-title"><?= $school->school ?></h2>
+                  <h2 class="secondary-title"><?= $school->degree ?></h2>
+                  <div id="object-edit">
+                    <ul class="edit__list">
+                      <li class="edit__link"><a href="/console/schools/image/<?= $school->id ?>">Image</a></li>
+                      <li class="edit__link"><a href="/console/schools/edit/<?= $school->id ?>">Edit</a></li>
+                      <li class="delete__link"><a href="/console/schools/delete/<?= $school->id ?>">Delete</a></li>
+                    </ul>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+            <div class="object__link">
+              <a href="/console/schools/add">New Education</a>
+            </div>
         </section>
-
     </body>
 </html>

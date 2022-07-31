@@ -37,43 +37,29 @@
             </div>
         <?php endif; ?>
 
-        <section class="w3-padding">
+        <section>
 
-            <h2>Manage Articles</h2>
-
-            <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
-                <tr class="w3-red">
-                    <th></th>
-                    <th>Title</th>
-                    <th>Slug</th>
-                    <th>Type</th>
-                    <th>Created</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php foreach($blogs as $article): ?>
-                    <tr>
-                        <td>
-                            <?php if($article->image): ?>
-                                <img src="<?= asset('storage/'.$article->image) ?>" width="200">
-                            <?php endif; ?>
-                        </td>
-                        <td><?= $article->title ?></td>
-                        <td>
-                            <a href="/article/<?= $article->slug ?>">
-                                <?= $article->slug ?>
-                            </a>
-                        </td>
-                        <td><?= $article->created_at->format('M j, Y') ?></td>
-                        <td><a href="/console/blogs/image/<?= $article->id ?>">Image</a></td>
-                        <td><a href="/console/blogs/edit/<?= $article->id ?>">Edit</a></td>
-                        <td><a href="/console/blogs/delete/<?= $article->id ?>">Delete</a></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-
-            <a href="/console/blogs/add" class="w3-button w3-green">New Article</a>
+            <h2 class="title">Manage Articles</h2>
+            <div class="objects-container">
+              <?php foreach($blogs as $article): ?>
+                <div class="object-item">
+                  <?php if($article->image): ?>
+                    <img src="<?= asset('storage/'.$article->image) ?>" width="250" height="250">
+                  <?php endif; ?>
+                  <h2 class="object-title"><?= $article->title ?></h2>
+                  <div id="object-edit">
+                    <ul class="edit__list">
+                      <li class="edit__link"><a href="/console/articles/image/<?= $article->id ?>">Image</a></li>
+                      <li class="edit__link"><a href="/console/articles/edit/<?= $article->id ?>">Edit</a></li>
+                      <li class="delete__link"><a href="/console/articles/delete/<?= $article->id ?>">Delete</a></li>
+                    </ul>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+            <div class="object__link">
+            <a href="/console/blogs/add">New Article</a>
+            </div>
 
         </section>
 

@@ -37,27 +37,28 @@
             </div>
         <?php endif; ?>
 
-        <section class="w3-padding">
+        <section>
 
-            <h2>Manage Types</h2>
-
-            <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
-                <tr class="w3-red">
-                    <th>Name</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php foreach($types as $type): ?>
-                    <tr>
-                        <td><?= $type->title ?></td>
-                        <td><a href="/console/types/edit/<?= $type->id ?>">Edit</a></td>
-                        <td><a href="/console/types/delete/<?= $type->id ?>">Delete</a></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-
-            <a href="/console/types/add" class="w3-button w3-green">New Type</a>
-
+            <h2 class="title">Manage Types</h2>
+            <div class="objects-container">
+              <?php foreach($types as $type): ?>
+                <div class="object-item">
+                  <?php if($type->image): ?>
+                    <img src="<?= asset('storage/'.$type->image) ?>" width="250" height="250">
+                  <?php endif; ?>
+                  <h2 class="object-title"><?= $type->title ?></h2>
+                  <div id="object-edit">
+                    <ul class="edit__list">
+                      <li class="edit__link"><a href="/console/types/edit/<?= $type->id ?>">Edit</a></li>
+                      <li class="delete__link"><a href="/console/types/delete/<?= $type->id ?>">Delete</a></li>
+                    </ul>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+            <div class="object__link">
+              <a href="/console/types/add">New Type</a>
+            </div>
         </section>
 
     </body>

@@ -37,36 +37,30 @@
             </div>
         <?php endif; ?>
 
-        <section class="w3-padding">
+        <section>
 
-            <h2>Manage Extra Contents</h2>
-
-            <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
-                <tr class="w3-red">
-                    <th></th>
-                    <th>Title</th>
-                    <th>Created</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php foreach($contents as $content): ?>
-                    <tr>
-                        <td>
-                            <?php if($content->image): ?>
-                                <img src="<?= asset('storage/'.$content->image) ?>" width="200">
-                            <?php endif; ?>
-                        </td>
-                        <td><?= $content->title ?></td>
-                        <td><?= $content->created_at->format('M j, Y') ?></td>
-                        <td><a href="/console/contents/image/<?= $content->id ?>">Image</a></td>
-                        <td><a href="/console/contents/edit/<?= $content->id ?>">Edit</a></td>
-                        <td><a href="/console/contents/delete/<?= $content->id ?>">Delete</a></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-
-            <a href="/console/contents/add" class="w3-button w3-green">New Content</a>
+            <h2 class="title">Manage Extra Contents</h2>
+            <div class="objects-container">
+              <?php foreach($contents as $content): ?>
+                <div class="object-item">
+                  <?php if($content->image): ?>
+                    <img src="<?= asset('storage/'.$content->image) ?>" width="250" height="250">
+                  <?php endif; ?>
+                  <h2 class="object-title"><?= $content->title ?></h2>
+                  <h2 class="secondary-title"><?= $content->created_at->format('M j, Y') ?></h2>
+                  <div id="object-edit">
+                    <ul class="edit__list">
+                      <li class="edit__link"><a href="/console/contents/image/<?= $content->id ?>">Image</a></li>
+                      <li class="edit__link"><a href="/console/contents/edit/<?= $content->id ?>">Edit</a></li>
+                      <li class="delete__link"><a href="/console/contents/delete/<?= $content->id ?>">Delete</a></li>
+                    </ul>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+            <div class="object__link">
+            <a href="/console/contents/add">New Content</a>
+            </div>
 
         </section>
 
