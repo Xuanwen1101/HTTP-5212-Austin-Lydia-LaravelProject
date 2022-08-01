@@ -49,9 +49,9 @@
                   <h2 class="object-title"><?= $article->title ?></h2>
                   <div id="object-edit">
                     <ul class="edit__list">
-                      <li class="edit__link"><a href="/console/articles/image/<?= $article->id ?>">Image</a></li>
-                      <li class="edit__link"><a href="/console/articles/edit/<?= $article->id ?>">Edit</a></li>
-                      <li class="delete__link"><a href="/console/articles/delete/<?= $article->id ?>">Delete</a></li>
+                      <li class="edit__link"><a href="/console/blogs/image/<?= $article->id ?>">Image</a></li>
+                      <li class="edit__link"><a href="/console/blogs/edit/<?= $article->id ?>">Edit</a></li>
+                      <li class="delete__link"><a href="/console/blogs/delete/<?= $article->id ?>">Delete</a></li>
                     </ul>
                   </div>
                 </div>

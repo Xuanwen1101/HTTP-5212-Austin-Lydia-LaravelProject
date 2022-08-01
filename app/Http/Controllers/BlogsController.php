@@ -50,7 +50,6 @@ class BlogsController extends Controller
     {
         return view('blogs.edit', [
             'blog' => $blog,
-            'types' => Type::all(),
         ]);
     }
 

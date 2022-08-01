@@ -34,57 +34,51 @@
 
         <section class="w3-padding">
 
-            <h2>Edit Project</h2>
+            <h2 class="title">Edit Project</h2>
 
-            <form method="post" action="/console/projects/edit/<?= $blog->id ?>" novalidate class="w3-margin-bottom">
+            <div class="obects-container">
+              <form method="post" action="/console/projects/edit/<?= $blog->id ?>" novalidate class="form">
+                  <?= csrf_field() ?>
+                  <div class="form__field">
+                      <label for="title" class="form__label">Title:</label>
+                      <input type="text" class="form__input" name="title" id="title" value="<?= old('title', $blog->title) ?>" required>
+              
+                      <?php if($errors->first('title')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('title'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <div class="form__field">
+                      <label for="date" class="form__label">Date:</label>
+                      <input type="date" class="form__input" name="date" id="date" value="<?= old('date', $blog->date) ?>" required>
+                      <?php if($errors->first('date')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('date'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <div class="form__field">
+                      <label for="slug" class="form__label">Slug:</label>
+                      <input type="text" class="form__input" name="slug" id="slug" value="<?= old('slug', $blog->slug) ?>" required>
+                      <?php if($errors->first('slug')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('slug'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <div class="form__field">
+                      <label for="content" class="form__label">Content:</label>
+                      <textarea name="content" class="form__textarea" id="content" required rows="10"><?= old('content', $blog->content) ?></textarea>
+                      <?php if($errors->first('content')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('content'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <button type="submit" class="form__button">Edit Article</button>
+              </form>
+            </div>
 
-                <?= csrf_field() ?>
-
-                <div class="w3-margin-bottom">
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" id="title" value="<?= old('title', $blog->title) ?>" required>
-                    
-                    <?php if($errors->first('title')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('title'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="date">Date:</label>
-                    <input type="date" name="date" id="date" value="<?= old('date', $blog->date) ?>" required>
-
-                    <?php if($errors->first('date')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('date'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="slug">Slug:</label>
-                    <input type="text" name="slug" id="slug" value="<?= old('slug', $blog->slug) ?>" required>
-
-                    <?php if($errors->first('slug')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('slug'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="content">Content:</label>
-                    <textarea name="content" id="content" required><?= old('content', $blog->content) ?></textarea>
-
-                    <?php if($errors->first('content')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('content'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <button type="submit" class="w3-button w3-green">Edit Article</button>
-
-            </form>
-
-            <a href="/console/blogs/list">Back to Articles</a>
+            <div class="object__link">
+              <a href="/console/blogs/list">Back to Articles</a>
+            </div>
 
         </section>
 
