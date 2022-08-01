@@ -32,89 +32,82 @@
 
         <hr>
 
-        <section class="w3-padding">
+        <section>
 
-            <h2>Edit Work Experience</h2>
+            <h2 class="title">Edit Work Experience</h2>
 
-            <form method="post" action="/console/works/edit/<?= $work->id ?>" novalidate class="w3-margin-bottom">
+            <div class="objects-container">
+              <form method="post" action="/console/works/edit/<?= $work->id ?>" novalidate class="form">
+                  <?= csrf_field() ?>
+                  <div class="form__field">
+                      <label for="title" class="form__label">Title:</label>
+                      <input type="text" class="form__input" name="title" id="title" value="<?= old('title', $work->title) ?>" required>
+              
+                      <?php if($errors->first('title')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('title'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <div class="form__field">
+                      <label class="form__label" for="employment_type">Employment Type:</label>
+                      <input type="text" class="form__input" name="employment_type" id="employment_type" value="<?= old('employment_type', $work->employment_type) ?>" required>
+              
+                      <?php if($errors->first('employment_type')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('employment_type'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <div class="form__field">
+                      <label for="company_name" class="form__label">Company Name:</label>
+                      <input type="text" class="form__input" name="company_name" id="company_name" value="<?= old('company_name', $work->company_name) ?>" required>
+              
+                      <?php if($errors->first('company_name')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('company_name'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <div class="form__field">
+                      <label for="location" class="form__label">Location:</label>
+                      <input type="text" class="form__input" name="location" id="location" value="<?= old('location', $work->location) ?>" required>
+              
+                      <?php if($errors->first('location')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('location'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <div class="form__field">
+                      <label for="description" class="form__label">Description:</label>
+                      <textarea name="description" class="form__textarea" id="description" required rows="10"><?= old('description', $work->description) ?></textarea>
+                      <?php if($errors->first('description')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('description'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <div class="form__field">
+                      <label for="start_date" class="form__label">Start Date:</label>
+                      <input type="date" class="form__input" name="start_date" id="start_date" value="<?= old('start_date', $work->start_date) ?>" required>
+              
+                      <?php if($errors->first('start_date')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('start_date'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <div class="form__field">
+                      <label for="end_date" class="form__label">End Date:</label>
+                      <input type="date" class="form__input" name="end_date" id="end_date" value="<?= old('end_date', $work->end_date) ?>" required>
+              
+                      <?php if($errors->first('end_date')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('end_date'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <button type="submit" class="form__button">Edit Work Experience</button>
+              </form>
+            </div>
 
-                <?= csrf_field() ?>
-
-                <div class="w3-margin-bottom">
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" id="title" value="<?= old('title', $work->title) ?>" required>
-                    
-                    <?php if($errors->first('title')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('title'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="employment_type">Employment Type:</label>
-                    <input type="text" name="employment_type" id="employment_type" value="<?= old('employment_type', $work->employment_type) ?>" required>
-                    
-                    <?php if($errors->first('employment_type')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('employment_type'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="company_name">Company Name:</label>
-                    <input type="text" name="company_name" id="company_name" value="<?= old('company_name', $work->company_name) ?>" required>
-                    
-                    <?php if($errors->first('company_name')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('company_name'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="location">Location:</label>
-                    <input type="text" name="location" id="location" value="<?= old('location', $work->location) ?>" required>
-                    
-                    <?php if($errors->first('location')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('location'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="description">Description:</label>
-                    <textarea name="description" id="description" required><?= old('description', $work->description) ?></textarea>
-
-                    <?php if($errors->first('description')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('description'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="start_date">Start Date:</label>
-                    <input type="date" name="start_date" id="start_date" value="<?= old('start_date', $work->start_date) ?>" required>
-                    
-                    <?php if($errors->first('start_date')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('start_date'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <div class="w3-margin-bottom">
-                    <label for="end_date">End Date:</label>
-                    <input type="date" name="end_date" id="end_date" value="<?= old('end_date', $work->end_date) ?>" required>
-                    
-                    <?php if($errors->first('end_date')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('end_date'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-                <button type="submit" class="w3-button w3-green">Edit Work Experience</button>
-
-            </form>
-
-            <a href="/console/works/list">Back to Work Experience List</a>
+            <div class="object__link">
+              <a href="/console/works/list">Back to Work Experience List</a>
+            </div>
 
         </section>
 

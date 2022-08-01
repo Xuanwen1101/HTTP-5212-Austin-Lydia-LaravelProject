@@ -32,41 +32,37 @@
 
         <hr>
 
-        <section class="w3-padding">
+        <section>
 
-            <h2>Add Content</h2>
+            <h2 class="title">Add Content</h2>
 
-            <form method="post" action="/console/contents/add" novalidate class="w3-margin-bottom">
+            <div class="objects-container">
+              <form method="post" action="/console/contents/add" novalidate class="form">
+                  <?= csrf_field() ?>
+                  <div class="form__field">
+                      <label for="title" class="form__label">Title:</label>
+                      <input type="text" class="form__input" name="title" id="title" value="<?= old('title') ?>" required>
+              
+                      <?php if($errors->first('title')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('title'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <div class="form__field">
+                      <label for="content" class="form__label">Content:</label>
+                      <textarea name="content" class="form__textarea" id="content" required><?= old('content') ?></textarea>
+                      <?php if($errors->first('content')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('content'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <button type="submit" class="form__button" class="w3-button w3-green">Add Content</button>
+              </form>
+            </div>
 
-                <?= csrf_field() ?>
-
-                <div class="w3-margin-bottom">
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" id="title" value="<?= old('title') ?>" required>
-                    
-                    <?php if($errors->first('title')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('title'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-
-                <div class="w3-margin-bottom">
-                    <label for="content">Content:</label>
-                    <textarea name="content" id="content" required><?= old('content') ?></textarea>
-
-                    <?php if($errors->first('content')): ?>
-                        <br>
-                        <span class="w3-text-red"><?= $errors->first('content'); ?></span>
-                    <?php endif; ?>
-                </div>
-
-
-                <button type="submit" class="w3-button w3-green">Add Content</button>
-
-            </form>
-
-            <a href="/console/contents/list">Back to Content List</a>
+            <div class="object__link">
+              <a href="/console/contents/list">Back to Content List</a>
+            </div>
 
         </section>
 

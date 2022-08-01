@@ -39,29 +39,28 @@
 
         <section>
 
-            <h2 class="title">Manage Projects</h2>
-            <div class="objects-container">
-              <?php foreach($projects as $project): ?>
-                <div class="object-item">
-                  <?php if($project->image): ?>
-                    <img src="<?= asset('storage/'.$project->image) ?>" width="250" height="250">
-                  <?php endif; ?>
-                  <h2 class="object-title"><?= $project->title ?></h2>
-                  <div id="object-edit">
-                    <ul class="edit__list">
-                      <li class="edit__link"><a href="/console/projects/image/<?= $project->id ?>">Image</a></li>
-                      <li class="edit__link"><a href="/console/projects/edit/<?= $project->id ?>">Edit</a></li>
-                      <li class="delete__link"><a href="/console/projects/delete/<?= $project->id ?>">Delete</a></li>
-                    </ul>
+            <h2 class="title">Manage Emails</h2>
+            <div class="contact__wrapper">
+              <?php foreach($emails as $email): ?>
+                <div class="contact__card">
+                  <div class="contact__text">
+                    <div class="contact__content contact__content--name">
+                      <h2>Name:</h2>
+                      <h3><?= $email->name?></h3>
+                    </div>
+                    <div class="contact__content contact__content--email">
+                      <h2>Email:</h2>
+                      <h3><?= $email->email?></h3>
+                    </div>
+                    <div class="contact__content contact__content--message">
+                      <h2>Message:</h2>
+                      <p><?= $email->message?></p>
+                    </div>
                   </div>
+                  <a class="contact__delete" href="/console/emails/delete/<?= $email->id ?>">Delete</a>
                 </div>
               <?php endforeach; ?>
             </div>
-
-            <div class="object__link">
-              <a href="/console/projects/add">New Project</a>
-            </div>
-
         </section>
 
     </body>

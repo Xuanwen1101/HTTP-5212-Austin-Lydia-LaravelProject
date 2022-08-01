@@ -32,17 +32,17 @@
 
         <hr>
 
-        <section class="w3-padding">
+        <section>
 
-            <h2>Edit Content</h2>
+            <h2 class="title">Edit Content</h2>
 
-            <form method="post" action="/console/contents/edit/<?= $content->id ?>" novalidate class="w3-margin-bottom">
+            <form method="post" action="/console/contents/edit/<?= $content->id ?>" novalidate class="form">
 
                 <?= csrf_field() ?>
 
-                <div class="w3-margin-bottom">
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" id="title" value="<?= old('title', $content->title) ?>" required>
+                <div class="form__field">
+                    <label for="title" class="form__label">Title:</label>
+                    <input type="text" class="form__input" name="title" id="title" value="<?= old('title', $content->title) ?>" required>
                     
                     <?php if($errors->first('title')): ?>
                         <br>
@@ -52,9 +52,9 @@
 
 
 
-                <div class="w3-margin-bottom">
-                    <label for="content">Content:</label>
-                    <textarea name="content" id="content" required><?= old('content', $content->content) ?></textarea>
+                <div class="form__field">
+                    <label for="content" class="form__label">Content:</label>
+                    <textarea name="content" class="form__textarea" id="content" required><?= old('content', $content->content) ?></textarea>
 
                     <?php if($errors->first('content')): ?>
                         <br>
@@ -63,11 +63,13 @@
                 </div>
 
 
-                <button type="submit" class="w3-button w3-green">Edit Content</button>
+                <button type="submit" class="form__button">Edit Content</button>
 
             </form>
 
-            <a href="/console/contents/list">Back to Content List</a>
+            <div class="object__link">
+              <a href="/console/contents/list">Back to Content List</a>
+            </div>
 
         </section>
 

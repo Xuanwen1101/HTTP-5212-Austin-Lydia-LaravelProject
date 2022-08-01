@@ -39,29 +39,27 @@
 
         <section>
 
-            <h2 class="title">Manage Projects</h2>
+            <h2 class="title">Manage Skills</h2>
             <div class="objects-container">
-              <?php foreach($projects as $project): ?>
+              <?php foreach($skills as $skill): ?>
                 <div class="object-item">
-                  <?php if($project->image): ?>
-                    <img src="<?= asset('storage/'.$project->image) ?>" width="250" height="250">
+                  <?php if($skill->image): ?>
+                    <img src="<?= asset('storage/'.$skill->image) ?>" width="250" height="250">
                   <?php endif; ?>
-                  <h2 class="object-title"><?= $project->title ?></h2>
+                  <h2 class="object-title"><?= $skill->title ?></h2>
                   <div id="object-edit">
                     <ul class="edit__list">
-                      <li class="edit__link"><a href="/console/projects/image/<?= $project->id ?>">Image</a></li>
-                      <li class="edit__link"><a href="/console/projects/edit/<?= $project->id ?>">Edit</a></li>
-                      <li class="delete__link"><a href="/console/projects/delete/<?= $project->id ?>">Delete</a></li>
+                      <li class="edit__link"><a href="/console/skills/image/<?= $skill->id ?>">Image</a></li>
+                      <li class="edit__link"><a href="/console/skills/edit/<?= $skill->id ?>">Edit</a></li>
+                      <li class="delete__link"><a href="/console/skills/delete/<?= $skill->id ?>">Delete</a></li>
                     </ul>
                   </div>
                 </div>
               <?php endforeach; ?>
             </div>
-
             <div class="object__link">
-              <a href="/console/projects/add">New Project</a>
+              <a href="/console/skills/add">New Skill</a>
             </div>
-
         </section>
 
     </body>

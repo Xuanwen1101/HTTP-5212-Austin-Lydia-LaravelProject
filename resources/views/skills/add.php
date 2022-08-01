@@ -32,28 +32,36 @@
 
         <hr>
 
-        <section>
+        <section class="w3-padding">
 
-            <h2 class="title">Add Type</h2>
+            <h2 class="title">Add Skill</h2>
 
             <div class="objects-container">
-              <form method="post" action="/console/types/add" novalidate class="form">
+              <form method="post" action="/console/skills/add" novalidate class="form">
                   <?= csrf_field() ?>
                   <div class="form__field">
                       <label for="title" class="form__label">Title:</label>
-                      <input type="text" class="form__input" name="title" id="title" value="<?= old('title') ?>" required>
+                      <input class="form__input" type="text" name="title" id="title" value="<?= old('title') ?>" required>
               
                       <?php if($errors->first('title')): ?>
                           <br>
                           <span class="w3-text-red"><?= $errors->first('title'); ?></span>
                       <?php endif; ?>
                   </div>
-                  <button type="submit" class="form__button">Add Type</button>
+                  <div class="form__field">
+                      <label for="content" class="form__label">Content:</label>
+                      <textarea class="form__textarea" name="content" id="content" required rows="10"><?= old('content') ?></textarea>
+                      <?php if($errors->first('content')): ?>
+                          <br>
+                          <span class="w3-text-red"><?= $errors->first('content'); ?></span>
+                      <?php endif; ?>
+                  </div>
+                  <button type="submit" class="form__button">Add Skill</button>
               </form>
             </div>
 
             <div class="object__link">
-              <a href="/console/types/list">Back to Type List</a>
+              <a href="/console/skills/list">Back to Skills</a>
             </div>
 
         </section>
