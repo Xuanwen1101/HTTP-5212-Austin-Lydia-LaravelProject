@@ -64,6 +64,75 @@ body {
   background: var(--background-color);
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0.8rem;
+}
+
+.header__nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.header__back {
+  display: flex;
+  align-items: center;
+}
+
+.header__back span { display: none; }
+
+.nav__active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__line { display: none; }
+
+.nav__wrapper {
+  position: relative;
+  background-color: var(--card-color);
+  height: 50vh;
+  max-height: 400px;
+  width: 70%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.nav__item, .nav__line, .nav__close {
+  font-family: var(--heading-font);
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.nav__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+.nav__item a, .nav__line {
+  color: var(--font-color-main);
+  text-decoration: none;
+}
+
+.nav__btn { cursor: pointer; }
+
 .dashboard__container {
   display: flex;
   flex-wrap: wrap;
@@ -296,7 +365,7 @@ body {
   .header__nav {
     position: initial;
     display: block;
-    width: initial;
+    width: 100%;
     height: initial;
     background: transparent;
   }
@@ -313,6 +382,7 @@ body {
     flex-direction: row;
     border-radius: 0;
     box-shadow: none;
+    justify-content: flex-end;
   }
 
   .nav__item, .nav__line { font-size: 22px; }
@@ -327,11 +397,7 @@ body {
   }
 
   .dashboard__container {
-    position: absolute;
     width: 100%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     gap: 56px 28px;
     margin-top: 70px;
   }
@@ -612,7 +678,7 @@ body {
 
 @media screen and (min-width: 1280px) {
 
-  .header { padding: 2rem 3rem; }
+  .header { padding: 2rem 3rem 1rem; }
 
   .nav__item { font-size: 18px; }
 
