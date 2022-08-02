@@ -16,16 +16,19 @@
         
     </head>
     <body>
-
-        <header class="w3-padding">
-
-            <h1 class="w3-text-red">Portfolio Console</h1>
-            <a href="/console/logout">Log Out</a> | 
-            <a href="/console/dashboard">Dashboard</a> | 
-            <a href="/">Website Home Page</a>
+        <header class="header">
+            <img class="nav__btn" src="/" alt="">
+            <nav class="header__nav">
+              <ul class="nav__wrapper">
+                <li class="nav__close">X</li>
+                <li class="nav__item"><a href="/console/dashboard">Dashboard</a></li>
+                <li class="nav__line">|</li>
+                <li class="nav__item"><a href="/">Website Home Page</a></li>
+                <li class="nav__line">|</li>
+                <li class="nav__item"><a href="/console/logout">Log Out</a></li>
+              </ul>
+            </nav>
         </header>
-
-        <hr>
 
         <section>
             <?php if(Auth::check()): ?>
