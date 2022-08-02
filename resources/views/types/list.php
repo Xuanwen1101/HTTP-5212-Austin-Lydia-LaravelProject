@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>My Portfolio</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="/app.css">
@@ -13,23 +16,19 @@
         
     </head>
     <body>
-
-        <header class="w3-padding">
-
-            <h1 class="w3-text-red">Portfolio Console</h1>
-
-            <?php if(Auth::check()): ?>
-                You are logged in as <?= auth()->user()->first ?> <?= auth()->user()->last ?> | 
-                <a href="/console/logout">Log Out</a> | 
-                <a href="/console/dashboard">Dashboard</a> | 
-                <a href="/">Website Home Page</a>
-            <?php else: ?>
-                <a href="/">Return to My Portfolio</a>
-            <?php endif; ?>
-
+        <header class="header">
+            <img class="nav__btn" src="/" alt="">
+            <nav class="header__nav">
+              <ul class="nav__wrapper">
+                <li class="nav__close">X</li>
+                <li class="nav__item"><a href="/console/dashboard">Dashboard</a></li>
+                <li class="nav__line">|</li>
+                <li class="nav__item"><a href="/">Website Home Page</a></li>
+                <li class="nav__line">|</li>
+                <li class="nav__item"><a href="/console/logout">Log Out</a></li>
+              </ul>
+            </nav>
         </header>
-
-        <hr>
 
         <?php if(session()->has('message')): ?>
             <div class="w3-padding w3-margin-top w3-margin-bottom">
@@ -37,27 +36,28 @@
             </div>
         <?php endif; ?>
 
-        <section class="w3-padding">
+        <section>
 
-            <h2>Manage Types</h2>
-
-            <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
-                <tr class="w3-red">
-                    <th>Name</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <?php foreach($types as $type): ?>
-                    <tr>
-                        <td><?= $type->title ?></td>
-                        <td><a href="/console/types/edit/<?= $type->id ?>">Edit</a></td>
-                        <td><a href="/console/types/delete/<?= $type->id ?>">Delete</a></td>
-                    </tr>
-                <?php endforeach; ?>
-            </table>
-
-            <a href="/console/types/add" class="w3-button w3-green">New Type</a>
-
+            <h2 class="title">Manage Types</h2>
+            <div class="objects-container">
+              <?php foreach($types as $type): ?>
+                <div class="object-item">
+                  <?php if($type->image): ?>
+                    <img src="<?= asset('storage/'.$type->image) ?>" width="250" height="250">
+                  <?php endif; ?>
+                  <h2 class="object-title"><?= $type->title ?></h2>
+                  <div id="object-edit">
+                    <ul class="edit__list">
+                      <li class="edit__link"><a href="/console/types/edit/<?= $type->id ?>">Edit</a></li>
+                      <li class="delete__link"><a href="/console/types/delete/<?= $type->id ?>">Delete</a></li>
+                    </ul>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+            <div class="object__link">
+              <a href="/console/types/add">New Type</a>
+            </div>
         </section>
 
     </body>
