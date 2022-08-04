@@ -90,7 +90,7 @@
               </form>
             </div>
 
-            <div class="objects__link">
+            <div class="object__link">
               <a href="/console/projects/list">Back to Project List</a>
             </div>
 
