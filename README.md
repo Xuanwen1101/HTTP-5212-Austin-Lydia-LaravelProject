@@ -64,15 +64,24 @@ This repository is copy of the simple PHP CMS except the CMS has been converted 
 FILESYSTEM_DRIVER=public
 ```
 
+- Create the symbolic link to set the File Storage for image functions:
+
+```
+php artisan storage:link
+```
+
 - The database setup includes migrations and seeding. Run the following command to initialize the database:
 
 ```
 php artisan migrate:refresh --seed
 ```
-- Run the Laravel project
+
+- Run the Laravel project:
+
 ```
 php artisan serve
 ```
+
 - Check the users table in the host service. All user acocunts will have the default password of "password".
 - The project has been set up
 
