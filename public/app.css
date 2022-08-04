@@ -263,6 +263,7 @@ body {
   line-height: 1.25;
   box-shadow: var(--card-shadow);
   border-radius: var(--border-radius);
+  font-family: var(--body-font);
   border: none;
   margin: 0.5em auto 1em;
   overflow: auto;
