@@ -101,8 +101,7 @@ php artisan serve
 - Manage Extra Contents (CRUD) -Xuanwen
 - Manage Blogs (CRUD) -Austin
 - Manage Accounts (CRUD) -Austin
-- Dashboard -Austin
-- CSS style -Austin
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
